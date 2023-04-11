@@ -1,0 +1,59 @@
+@import "src/common-styles/_colors";
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+
+  .title {
+    font-size: 64px;
+    margin: 74px 0;
+  }
+
+  .login-box {
+    width: 320px;
+    height: 340px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid $dark-blue;
+
+    .welcome {
+      margin: 12px 0 32px;
+      font-size: 24px;
+      color: $dark-blue;
+    }
+
+    input {
+      display: block;
+      width: 300px;
+      height: 24px;
+      padding: 10px;
+      font-size: 20px;
+      margin: 6px;
+      background: $grey;
+      border: 0;
+    }
+
+    .login-btn {
+      height: 44px;
+      color: white;
+      margin: 45px 0 32px;
+      padding: 11px;
+      background: $dark-blue;
+      font-size: 20px;
+      border: 0;
+      border-radius: 4px;
+      width: 320px;
+      cursor: pointer;
+    }
+
+    .sign-up-btn {
+      text-decoration: underline;
+      color: $dark-blue;
+      cursor: pointer;
+    }
+  }
+}

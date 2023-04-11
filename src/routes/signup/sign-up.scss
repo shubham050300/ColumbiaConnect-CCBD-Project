@@ -1,0 +1,75 @@
+@import "src/common-styles/_colors";
+
+.sign-up {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+
+  .title {
+    font-size: 64px;
+    margin: 50px 0;
+  }
+
+  .login-box {
+    width: 400px;
+    height: 500px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid $dark-blue;
+
+    .welcome {
+      margin: 12px 0 32px;
+      font-size: 24px;
+      color: $dark-blue;
+    }
+
+    .input-box {
+      display: block;
+      width: 300px;
+      height: 24px;
+      padding: 14px;
+      font-size: 16px;
+      margin: 6px;
+      background: $grey;
+      border: 0;
+    }
+
+    .radio-group {
+      display: flex;
+      width: 328px;
+      justify-content: start;
+      gap: 13px;
+      color: #0133a0;
+      margin: 20px 0 0;
+      border: 1px dashed $light-blue;
+
+      label {
+        display: inline-block;
+        margin: 12px;
+        font-size: 16px;
+      }
+    }
+
+    .login-btn {
+      height: 44px;
+      color: white;
+      margin: 32px 0 32px;
+      padding: 11px;
+      background: $dark-blue;
+      font-size: 20px;
+      border: 0;
+      border-radius: 4px;
+      width: 320px;
+      cursor: pointer;
+    }
+
+    .sign-up-btn {
+      text-decoration: underline;
+      color: $dark-blue;
+      cursor: pointer;
+    }
+  }
+}

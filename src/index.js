@@ -11,17 +11,18 @@ import SignUp from "./routes/signup/sign-up";
 import Student from "./routes/student/student";
 import Referral from "./routes/student/routes/referral/referral";
 import Resume from "./routes/student/routes/resume/resume";
+import AccountState from './states/AccountState';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home/>,
+    element: <AccountState><Home/></AccountState>,
   },
   {
     path: "sign-up",
-    element: <SignUp/>,
+    element: <AccountState><SignUp/></AccountState>,
   },
   {
     path: "student",

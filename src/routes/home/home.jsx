@@ -1,21 +1,28 @@
-import React, {useRef} from "react";
+import React, {useState, useContext} from "react";
 import './home.scss'
 import {useNavigate} from "react-router-dom";
+import AccountContext from "../../context/AccountContext";
 
 export default function Home() {
-  const emailRef = useRef()
-  const passwordRef = useRef()
   const navigate = useNavigate();
 
-  const onLoginClick = () => {
-    let email = emailRef.current.value
-    // let password = passwordRef.current.value
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-    // TODO: Login api call here
+  const {authenticate} = useContext(AccountContext);
 
-    let localStorageValue = {email: email, apiKey: 'xyz'};
-    localStorage.setItem('login', JSON.stringify(localStorageValue));
-    navigate('/student');
+  const handleLogin = (event) => {
+    event.preventDefault();
+    authenticate(email, password)
+    .then(data => {
+      console.log("Login Successful", data);
+      let localStorageValue = {email: email, apiKey: 'xyz'};
+      localStorage.setItem('login', JSON.stringify(localStorageValue));
+      navigate('/student');
+    })
+    .catch(err => {
+      console.log("Failed to login", err.message);
+    })
   }
 
   return (
@@ -26,9 +33,9 @@ export default function Home() {
       </div>
       <div className={'login-box'}>
         <div className={'welcome'}>Welcome</div>
-        <input ref={emailRef} type={'email'} placeholder={'Email'}/>
-        <input ref={passwordRef} type={'password'} placeholder={'Password'}/>
-        <button onClick={onLoginClick} className={'login-btn'}>Login</button>
+        <input value={email} onChange={(event) => setEmail(event.target.value)} type={'email'} placeholder={'Email'}/>
+        <input value={password} onChange={(event) => setPassword(event.target.value)} type={'password'} placeholder={'Password'}/>
+        <button onClick={handleLogin} className={'login-btn'}>Login</button>
         <div>
           <span>Don't have an account? </span>
           <a href={'sign-up'} className={'sign-up-btn'}>Sign up</a>

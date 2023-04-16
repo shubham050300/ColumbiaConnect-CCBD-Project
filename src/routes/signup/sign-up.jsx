@@ -5,7 +5,7 @@ import AccountContext from "../../context/AccountContext";
 
 export default function SignUp() {
   const navigate = useNavigate();
-  const [selectedOption, setSelectedOption] = useState('option1');
+  const [selectedOption, setSelectedOption] = useState('student');
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -20,7 +20,7 @@ export default function SignUp() {
 
   const handleRegistration = (event) => {
     event.preventDefault();
-    signup(email, name, password, profile)
+    signup(email, name, password, profile, selectedOption)
     .then(data => {
       console.log("Registration Successful", data);
     })
@@ -57,8 +57,8 @@ export default function SignUp() {
           <label>
             <input
               type="radio"
-              value="option1"
-              checked={selectedOption === 'option1'}
+              value="student"
+              checked={selectedOption === 'student'}
               onChange={handleOptionChange}
             />
             Student
@@ -66,8 +66,8 @@ export default function SignUp() {
           <label>
             <input
               type="radio"
-              value="option2"
-              checked={selectedOption === 'option2'}
+              value="alumni"
+              checked={selectedOption === 'alumni'}
               onChange={handleOptionChange}
             />
             Alumni

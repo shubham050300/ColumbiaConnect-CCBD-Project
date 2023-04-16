@@ -6,7 +6,7 @@ import { AuthenticationDetails, CognitoUser } from "amazon-cognito-identity-js";
 const AccountState = (props) => {
     
     //user registration
-    const signup = async(email, name, password, profile)=> {
+    const signup = async(email, name, password, profile, selectedOption)=> {
         return await new Promise((resolve, reject) => {
             var attributeList = [];
 
@@ -20,8 +20,14 @@ const AccountState = (props) => {
                 Value: profile
             }
 
+            var userType = {
+                Name: "custom:userType",
+                Value: selectedOption
+            }
+
             attributeList.push(userName);
             attributeList.push(userProfile);
+            attributeList.push(userType);
 
             userPool.signUp(email, password, attributeList, null, (err, data) => {
                 if(err) {
